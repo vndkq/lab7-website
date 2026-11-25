@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이준호 | Lab 7</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <h1>이준호</h1>
+    </header>
+
+    <section aria-labelledby="gallery-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="gallery-heading">프로젝트 사진</h2>
+          <p class="note">프로젝트 주제를 보여 주는 AI 생성 이미지입니다. 날짜는 프로젝트 기록일입니다.</p>
+        </div>
+        <div class="sort-options" role="group" aria-label="사진 정렬">
+          <button type="button" data-sort="recent" aria-pressed="true">최신순</button>
+          <button type="button" data-sort="title" aria-pressed="false">제목순</button>
+        </div>
+      </div>
+
+      <ul id="gallery" class="gallery" aria-label="프로젝트 사진 목록">
+        <li class="card">
+          <div class="photo rack" role="img" aria-label="어두운 서버 랙의 GPU 장비"></div>
+          <div class="caption">
+            <h3>GPU 서버</h3>
+            <p>IISE GPU 오류 예측</p>
+            <time datetime="2026-11-22">2026.11.22</time>
+          </div>
+        </li>
+        <li class="card">
+          <div class="photo signal" role="img" aria-label="시간에 따른 신호가 표시된 모니터"></div>
+          <div class="caption">
+            <h3>시계열 로그</h3>
+            <p>IISE GPU 오류 예측</p>
+            <time datetime="2026-11-22">2026.11.22</time>
+          </div>
+        </li>
+        <li class="card">
+          <div class="photo chip" role="img" aria-label="금색 미세 전극 칩"></div>
+          <div class="caption">
+            <h3>미세 전극 배열</h3>
+            <p>FronTIer</p>
+            <time datetime="2026-11-19">2026.11.19</time>
+          </div>
+        </li>
+        <li class="card">
+          <div class="photo scope" role="img" aria-label="실험대 위의 현미경과 전자 부품"></div>
+          <div class="caption">
+            <h3>현미경 관찰</h3>
+            <p>FronTIer</p>
+            <time datetime="2026-11-19">2026.11.19</time>
+          </div>
+        </li>
+      </ul>
+      <p id="sort-status" class="visually-hidden" role="status"></p>
+    </section>
+
+    <section class="benchmark" aria-labelledby="benchmark-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="benchmark-heading">정렬 속도 비교</h2>
+          <p class="note">같은 가상 사진 기록을 두 알고리즘으로 최신순 정렬합니다.</p>
+        </div>
+        <div class="benchmark-controls">
+          <label for="sample-size">기록 수</label>
+          <select id="sample-size">
+            <option value="250">250개</option>
+            <option value="2500">2,500개</option>
+            <option value="10000" selected>10,000개</option>
+          </select>
+          <button id="run-benchmark" type="button" class="primary">비교 실행</button>
+        </div>
+      </div>
+      <div id="benchmark-result" hidden>
+        <table aria-label="정렬 알고리즘 비교 결과">
+          <thead>
+            <tr><th scope="col">알고리즘</th><th scope="col">정렬 시간</th><th scope="col">날짜 비교 횟수</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">병합 정렬</th><td id="merge-time"></td><td id="merge-comparisons"></td></tr>
+            <tr><th scope="row">삽입 정렬</th><td id="insertion-time"></td><td id="insertion-comparisons"></td></tr>
+          </tbody>
+        </table>
+        <p class="note">5회 실행한 정렬 시간의 중앙값입니다. 사진 로딩과 화면 표시 시간은 제외합니다.</p>
+      </div>
+      <p id="benchmark-status" class="note" role="status"></p>
+    </section>
+  </main>
+</body>
+</html>
